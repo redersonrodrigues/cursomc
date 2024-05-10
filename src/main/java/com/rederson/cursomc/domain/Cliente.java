@@ -15,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -29,6 +30,7 @@ public class Cliente implements Serializable {
     private String cpfOrCnpj;
     private Integer tipo;
 
+    // associações
     @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
@@ -37,6 +39,11 @@ public class Cliente implements Serializable {
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
 
+
+    @OneToMany(mappedBy="cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
+    // construtores
     public Cliente() {
     }
 
@@ -48,6 +55,7 @@ public class Cliente implements Serializable {
         this.tipo = tipo.getCode();
     }
 
+    // getters e setters
     public Integer getId() {
         return id;
     }
@@ -104,6 +112,15 @@ public class Cliente implements Serializable {
         this.telefones = telefones;
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
+
+    // hashCode equals
     @Override
     public int hashCode() {
         final int prime = 31;
