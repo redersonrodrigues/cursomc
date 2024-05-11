@@ -5,12 +5,16 @@ import java.util.Date;
 import com.rederson.cursomc.domain.enums.EstadoPagamento;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 
 @Entity
 public class PagamentoComBoleto extends Pagamento {
     private static final long serialVersionUID = 1L;
 
+    @Temporal(TemporalType.DATE)
     private Date dataVencimento;
+    @Temporal(TemporalType.DATE)
     private Date dataPagamento;
 
     // contrutores
