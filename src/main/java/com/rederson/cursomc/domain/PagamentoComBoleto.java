@@ -2,6 +2,7 @@ package com.rederson.cursomc.domain;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.rederson.cursomc.domain.enums.EstadoPagamento;
 
 import jakarta.persistence.Entity;
@@ -13,8 +14,11 @@ public class PagamentoComBoleto extends Pagamento {
     private static final long serialVersionUID = 1L;
 
     @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataVencimento;
+
     @Temporal(TemporalType.DATE)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataPagamento;
 
     // contrutores

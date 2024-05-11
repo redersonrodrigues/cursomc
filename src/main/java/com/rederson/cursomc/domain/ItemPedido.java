@@ -1,11 +1,14 @@
 package com.rederson.cursomc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 
 @Entity
 public class ItemPedido {
     // associações
+    @JsonIgnore
     @EmbeddedId
     private ItemPedidoPK id = new ItemPedidoPK();
     // atributos basicos
@@ -27,12 +30,12 @@ public class ItemPedido {
         this.preco = preco;
     }
 // getters e setters
-
+@JsonIgnore
 public Pedido getPedido() {
     return id.getPedido();
 }
 
-
+// @JsonIgnore = foi retirado para que o produto apareça na serialização
 public Produto getProduto() {
     return id.getProduto();
 }
