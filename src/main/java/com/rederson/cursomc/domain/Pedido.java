@@ -1,14 +1,11 @@
 package com.rederson.cursomc.domain;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,11 +30,11 @@ public class Pedido implements Serializable {
     private Date instante;
 
     // associações
-    @JsonManagedReference
+    
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
     private Pagamento pagamento;
 
-    @JsonManagedReference
+    
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

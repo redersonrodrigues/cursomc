@@ -2,8 +2,6 @@ package com.rederson.cursomc.domain;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +19,7 @@ public class Cidade implements Serializable {
     private String nome;
 
     // associações
-    @JsonManagedReference // protegendo referencia ciclica
+     // protegendo referencia ciclica
     @ManyToOne
     @JoinColumn(name = "estado_id")
     private Estado estado;
